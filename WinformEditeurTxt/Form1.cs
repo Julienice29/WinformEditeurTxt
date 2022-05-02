@@ -17,14 +17,19 @@ namespace WinformEditeurTxt
             InitializeComponent();
         }
 
-        private void BtnExit_Click(object sender, EventArgs e)
+        private void RichTextBoxEditeur_TextChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void MnuQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void RichTextBoxEditeur_TextChanged(object sender, EventArgs e)
+        private void copierToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
 
         }
     }
