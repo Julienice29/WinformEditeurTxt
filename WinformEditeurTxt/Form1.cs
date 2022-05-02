@@ -25,6 +25,7 @@ namespace WinformEditeurTxt
         private void RichTextBoxEditeur_TextChanged(object sender, EventArgs e)
         {
             
+
         }
     }
 }
