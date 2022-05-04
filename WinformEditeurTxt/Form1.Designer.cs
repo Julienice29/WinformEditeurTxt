@@ -38,7 +38,6 @@ namespace WinformEditeurTxt
             this.MnuQuitter = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuEdition = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuAnnuler = new System.Windows.Forms.ToolStripMenuItem();
-            this.MnuRétablir = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuCopier = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuCouper = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuColler = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,17 +46,25 @@ namespace WinformEditeurTxt
             this.CmsCouper = new System.Windows.Forms.ToolStripMenuItem();
             this.copierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.couperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.collerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuPrincipal.SuspendLayout();
             this.CmsCopier.SuspendLayout();
+            this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtbAffiche
             // 
-            this.rtbAffiche.Location = new System.Drawing.Point(13, 48);
+            this.rtbAffiche.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbAffiche.Location = new System.Drawing.Point(0, 28);
             this.rtbAffiche.Margin = new System.Windows.Forms.Padding(4);
             this.rtbAffiche.Name = "rtbAffiche";
+            this.rtbAffiche.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rtbAffiche.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbAffiche.Size = new System.Drawing.Size(1041, 450);
+            this.rtbAffiche.Size = new System.Drawing.Size(1067, 526);
             this.rtbAffiche.TabIndex = 0;
             this.rtbAffiche.Text = "Veuillez écrire ici ...";
             this.rtbAffiche.TextChanged += new System.EventHandler(this.RichTextBoxEditeur_TextChanged);
@@ -67,10 +74,11 @@ namespace WinformEditeurTxt
             this.MnuPrincipal.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MnuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
-            this.MnuEdition});
+            this.MnuEdition,
+            this.clearToolStripMenuItem});
             this.MnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.MnuPrincipal.Name = "MnuPrincipal";
-            this.MnuPrincipal.Size = new System.Drawing.Size(1067, 30);
+            this.MnuPrincipal.Size = new System.Drawing.Size(1067, 28);
             this.MnuPrincipal.TabIndex = 1;
             this.MnuPrincipal.Text = "menuStrip1";
             // 
@@ -89,12 +97,14 @@ namespace WinformEditeurTxt
             this.MnuOuvrir.Name = "MnuOuvrir";
             this.MnuOuvrir.Size = new System.Drawing.Size(198, 26);
             this.MnuOuvrir.Text = "Ouvrir";
+            this.MnuOuvrir.Click += new System.EventHandler(this.MnuOuvrir_Click);
             // 
             // MnuEnregistrerSous
             // 
             this.MnuEnregistrerSous.Name = "MnuEnregistrerSous";
             this.MnuEnregistrerSous.Size = new System.Drawing.Size(198, 26);
             this.MnuEnregistrerSous.Text = "Enregistrer Sous";
+            this.MnuEnregistrerSous.Click += new System.EventHandler(this.MnuEnregistrerSous_Click);
             // 
             // MnuQuitter
             // 
@@ -107,7 +117,6 @@ namespace WinformEditeurTxt
             // 
             this.MnuEdition.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuAnnuler,
-            this.MnuRétablir,
             this.MnuCopier,
             this.MnuCouper,
             this.MnuColler});
@@ -120,30 +129,28 @@ namespace WinformEditeurTxt
             this.MnuAnnuler.Name = "MnuAnnuler";
             this.MnuAnnuler.Size = new System.Drawing.Size(224, 26);
             this.MnuAnnuler.Text = "Annuler";
-            // 
-            // MnuRétablir
-            // 
-            this.MnuRétablir.Name = "MnuRétablir";
-            this.MnuRétablir.Size = new System.Drawing.Size(224, 26);
-            this.MnuRétablir.Text = "Rétablir";
+            this.MnuAnnuler.Click += new System.EventHandler(this.MnuAnnuler_Click);
             // 
             // MnuCopier
             // 
             this.MnuCopier.Name = "MnuCopier";
             this.MnuCopier.Size = new System.Drawing.Size(224, 26);
             this.MnuCopier.Text = "Copier";
+            this.MnuCopier.Click += new System.EventHandler(this.MnuCopier_Click);
             // 
             // MnuCouper
             // 
             this.MnuCouper.Name = "MnuCouper";
             this.MnuCouper.Size = new System.Drawing.Size(224, 26);
             this.MnuCouper.Text = "Couper";
+            this.MnuCouper.Click += new System.EventHandler(this.MnuCouper_Click);
             // 
             // MnuColler
             // 
             this.MnuColler.Name = "MnuColler";
             this.MnuColler.Size = new System.Drawing.Size(224, 26);
             this.MnuColler.Text = "Coller";
+            this.MnuColler.Click += new System.EventHandler(this.MnuColler_Click);
             // 
             // contextMenuStrip1
             // 
@@ -178,6 +185,44 @@ namespace WinformEditeurTxt
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copierToolStripMenuItem1,
+            this.couperToolStripMenuItem,
+            this.collerToolStripMenuItem});
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(211, 104);
+            // 
+            // copierToolStripMenuItem1
+            // 
+            this.copierToolStripMenuItem1.Name = "copierToolStripMenuItem1";
+            this.copierToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.copierToolStripMenuItem1.Text = "Copier";
+            this.copierToolStripMenuItem1.Click += new System.EventHandler(this.copierToolStripMenuItem1_Click_1);
+            // 
+            // couperToolStripMenuItem
+            // 
+            this.couperToolStripMenuItem.Name = "couperToolStripMenuItem";
+            this.couperToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.couperToolStripMenuItem.Text = "Couper";
+            this.couperToolStripMenuItem.Click += new System.EventHandler(this.couperToolStripMenuItem_Click);
+            // 
+            // collerToolStripMenuItem
+            // 
+            this.collerToolStripMenuItem.Name = "collerToolStripMenuItem";
+            this.collerToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.collerToolStripMenuItem.Text = "Coller";
+            this.collerToolStripMenuItem.Click += new System.EventHandler(this.collerToolStripMenuItem_Click);
+            // 
             // FrmEditeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -192,6 +237,7 @@ namespace WinformEditeurTxt
             this.MnuPrincipal.ResumeLayout(false);
             this.MnuPrincipal.PerformLayout();
             this.CmsCopier.ResumeLayout(false);
+            this.contextMenuStrip3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,7 +253,6 @@ namespace WinformEditeurTxt
         private System.Windows.Forms.ToolStripMenuItem MnuQuitter;
         private System.Windows.Forms.ToolStripMenuItem MnuEdition;
         private System.Windows.Forms.ToolStripMenuItem MnuAnnuler;
-        private System.Windows.Forms.ToolStripMenuItem MnuRétablir;
         private System.Windows.Forms.ToolStripMenuItem MnuCopier;
         private System.Windows.Forms.ToolStripMenuItem MnuCouper;
         private System.Windows.Forms.ToolStripMenuItem MnuColler;
@@ -216,6 +261,11 @@ namespace WinformEditeurTxt
         private System.Windows.Forms.ToolStripMenuItem CmsCouper;
         private System.Windows.Forms.ToolStripMenuItem copierToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem copierToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem couperToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem collerToolStripMenuItem;
     }
 }
 
